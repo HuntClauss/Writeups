@@ -1,0 +1,63 @@
+# 1Captcha Documentation 
+## Embedding 1Captcha Into Your Website
+
+To solve a 1Captcha, begin by sending a POST request to the `/api/challenge` endpoint. The server will return a JSON response similar to the sample response below:
+```bash
+{
+"challenge":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMjU2R0NNIn0.olzRmRu19fLfNlkUVcsWCPZ5dBB6_R8HeiFU59zI7eYUNvg4kc4edQ.QjblDShS9Tnrvmf8.iVZZiJVSV8JbuNRmZfg3jEVJatko6NuFG_HhM-0eh0Ki2FKU1F7oF_MyHTJSdJ_nTm92Li6FviJeVV4Rsf4ZhiQkGgL45n_6lsLB7_MZAxGOn8pFRuJ5Ewmc9_-CPdF5esSKURlgfLSQvpU7jAHNNT4.OQAHwI7uYwnMLU9FzktaGw",
+"stage":0,
+"stages":20,
+"expected":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAABb0lEQVR4nO2ZLUuDUQBGn32P4ZzMgXsxCOpAwTLDghgEk6wIBoPZH2MVf4DNJuIfsAlaFASTiLDisIhBnBvOtGlRk/e8sOek257D4X3LvYnDaKKvESZJC9A4AC1A4wC0AE2sAqQyWS2sbKo6Xw+2mQ629AvpbF61RlNLa9sqjFd0cbKvx7urMNtBVn4az+S0uLqlWqOp4mSEOOC/QOv2XMd7O7o5O0L20QC9bkfP7QdJUvv+GnHAv4AB3bdXZDc2Ad47Ix6g/9FDdmMTgMIBaAEaB6AFaByAFqBxAFqAxgFogQHJVPrbORVuN9jSH+QKpeE5my8G241NgNLUzPBcrEwH28XvBJc3dlWO5hTVvi5CZ+vrGitX9fLU0uXpwb/eFST8NjjiOAAtQOMAtACNA9ACNA5AC9A4AC1A4wC0AI0D0AI0DkAL0DgALUDjALQAjQPQAjQOQAvQOAAtQOMAtACNA9ACNA5AC9A4AC1A8wlwPi9yZ2dPNgAAAABJRU5ErkJggg==",
+"images":["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAABaklEQVR4nO2YvUoDQRRGv5n9kwQ0GhXB3iewSaWFte/k+5jG1soXsLETrSUBO0nYDbtrF7TeuZxA7qlmmzuHA7uzTHh9Oei1x0RagMYD0AI0HoAWoPEAtACNB6AFaDwALUBjGiCq0El+o1F2ZbnNIHKLoTFUmmQzTYs75eFIi+ZRK71bbDWYpAGiSh3nt5oUM5XhNOVoM5K/Aj/tmz7XD/rePKcebULSAJ0a1f2XJGnVfaQcbYbZR7Dt11ajk2IWoFNtNTophsdgazc6If4jRAvQeABagMYD0AI0HoAWoPEAtACNWYCg7N/TrmIWIIbxdp2FkdU2gzELUIWL7boMZ1bbDCb5neB5ca8qXmr85yL0ML9WEadq+qUW9VytdueuIHmA5eYp9UhT/BSgBWg8AC1A4wFoARoPQAvQeABagMYD0AI0HoAWoPEAtACNB6AFaDwALUDjAWgBGg9AC9B4AFqAxgPQAjR7H+AXHIgqXb01GiUAAAAASUVORK5CYII=","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAABdUlEQVR4nO2ZMS8DcRiHf9eeQ6s6aEQigotE0kZ9BcEg/Qg2VtLBZ7DYxCcwm8RqNBisUsEqYRADUhGKrbVYxP2fN/E+0033e/Lk/sPdRQdR/Kl/TI4WoPEAtACNB6AFaEwHyA8mmt5YUWWhltmGyQBxcUBps6Hliz3Vd9dVqk1kt5XZnX9BvtCvtNnQ1NqSCulokE1zT8Dd0ZmOZzd1vXMYZM9UgE77VU+tG0nS/UkryKapAN95f3wJsmM4QDvIjtkAH51OkB2zAULhAWgBGg9AC9B4AFqAxgPQAjQegBb4iVzc+1QRxdlpmg3QN1LqXiflocx2zAYYro53r4szY5ntRNZ+jVW3V1Wen1RlcU65pHcMHk4v9Xx1q/Otfb394auyuQChMXsEQuEBaAEaD0AL0HgAWoDGA9ACNB6AFqDxALQAjQegBWg8AC1A4wFoARoPQAvQeABagMYD0AI0HoAWoPEAtACNB6AFaDwALUDjAWgBmi+bbDCNf7Bd/wAAAABJRU5ErkJggg==","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAABZElEQVR4nO2aPUoDURhF70xiDLG1cAN24g60UBBch+BWXIJgb+MWrAUFC4OpFCNIVFAEMeZniDPPRuzFN5wMc0/5isvhwOu+5CRcBdWYlBagcQBagMYBaAEaB6AFaByAFqBxAFqAxgFoARoHoAVoHIAW+CthFjTsDaPtNaMtlUz2nGlw/KT7wwcV01w7j1tRduc+QAhSd+9ar6dvyl4ySVJreSHa/tx/gSSR1o/WtH23qfbKYvT9uQ8gSWkzUdpK1Vldir8dfbFEGu34utUK0Kl5gKRR8wBl4AC0AI0D0AI0DkAL0DgALUDjALQATaUChPBzzhTxqqlSAYpJLkmavc9UfMWpUJkA+aTQR+9TkhRyaXQzirJbiQC3B32dbZxrOpj+vl3sXqq739O4P/7XduI7wZrjALQAjQPQAjQOQAvQOAAtQOMAtACNA9ACNA5AC9A4AC1A4wC0AI0D0AI0DkAL0HwDZY5Ka7IGpY8AAAAASUVORK5CYII=","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAABZUlEQVR4nO2asS4EURhGvzszNohuI0oKj6IVryFRKDyGWqNQSWhRq5RKoRE0iKzIxm6wa2fnapiQUc9Jdr7TTOZOc+4p/plMbjgYHkU1mIQWoHEAWoDGAWgBGgegBWgcgBagcQBagMYBaAEaB6AFaBzgv8ViJHUuP+t2Qch+3/Sfcl0c9nW+21M+iNq6XYK06iOTpBil4/WObk7f9fY8liTNtlNUrC4SSQpBWt2Z1+bVouYWmrHxH8oZkGRBaSuovTxF+tROZQim04HwwKgEaM00681Y2W1o1gjwh5AD0AI0DkAL0DgALUDjALQAjQPQAjSVADGG72szjg5VAuSDQpI0fC1U5JMf4U+A0Ucsf4YWY+nleoRI1UkZ4Gy7q72Ve/Ue8vLh/tqjTjY66t5Nbojgc4INxwFoARoHoAVoHIAWoHEAWoDGAWgBGgegBWgcgBagcQBagMYBaAEaB6AFaByAFqD5AhptSgwVfB41AAAAAElFTkSuQmCC","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAABcklEQVR4nO2bsUrDUBhGvyQGiQpWfIHszg6C4OLiazjo4iv4RA5uDn0BwUE6KFIEoU6ipUKJhdgk10W6SlL1kJv/jIH/5+TAXS5JMH04d+owIS1AYwFoARoLQAvQWABagMYC0AI0FoAWoLEAtACNBaAFaCwALUBjAWgBGgtAC9BYAFqAxgLQAjQWgBag8SZA6Sq9ZePacyt/4PKvZHmm+5ehBs8DzatSZwcnteZbG8BJurrrazQZ6eNzJklK4qT2ntYegUDS0c6hTvePtbG63nhPawNIUhiEisJIW0mv+Y5f9MGIouYn2YsAcRg3nvUiQLjEW3gRYBksAC1AYwFoARoLQAvQWABagMYC0AI0XgRwiw/+63/570WAoiwkSXmRq3JVrdnWB5iXhcbfl6GVc5rM3mvNt/ZOUJKun240fH3UNM8Wzy5uL5Vup9pLd9Vb2/xxR2C/zHQcC0AL0FgAWoDGAtACNBaAFqCxALQATecDfAHFC0Z4+yDErQAAAABJRU5ErkJggg==","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAABYUlEQVR4nO2YvUrEQBRGv0mc7I8gqCDY6gPYbCGCrW/nC/gaWtntC9jaibUINi7qZjNjtyuCNmZyLnhPFULIPRxmiplwpbusf0xFC9B4AFqAxgPQAjQegBagsR8gBnWnE6WjWOT3W0X+2gO5CUqzkVbnU+WdSvF6IT20vc+xFyAGrc7GSrOx0l5dfJzJLVDfL9VcvqievxWfZS9AmxWeOklS/dj/kv+OvQBfeU/FR9gO8FH+oGo6QCi/AGwHGAIPQAvQeABagMYD0AI0HoAWoPEAtMCvVGH9mAuZmg6Qp5sAmoSfP/wDtgMcbG6E0n6Z2yF7V2KS2ott5cNa+bhZv0snIy13a4XnTvHmtbejsskA8XYx2CzTW2AIPAAtQOMBaAEaD0AL0HgAWoDGA9ACNB6AFqDxALQAjQegBWg8AC1A4wFoARoPQAvQeABagMYD0AI0HoAWoPEAtACNB6AFaD4BYukyFp+qfC4AAAAASUVORK5CYII=","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAABfUlEQVR4nO2av0vDQBhAvzQKVvEHOIiLg9jBQVy7uDu4+3+Icyc354Kjo6P/gFKhi6sgrYi6tBZEoYNJJaapWwkUKrmmPO76vemGfMfjkQsEzhs06wOZYQq0AI0GoAVoNAAtQKMBaAEaDUAL0GgAWoBGA9ACNBqAFqDRALRAXvSiRC5qbbl76maasz5AECVSvW3JXuVeTq6epdEJMs3PTclr6oS/fanetOWy/i5vnz/G+1j9Bhztr8vjWVlOD7eM97A2wOK8L7ubSyIiclBaM97H2gBplou+8awTAVYWzD9lTgTwC57xrBMBJkED0AI0GoAWoNEAtACNBqAFaDQALZAHcT9JrbPd+HEiwFcQD9fdMB7z5ChOBGh2wuH65SMc8+Qons23xCrXr/LQ+pZaoytR6hiUt1eltFGU8+Odf3+VrQ6QB04cgUnQALQAjQagBWg0AC1AowFoARoNQAvQaABagEYD0AI0GoAWoNEAtACNBqAFaDQALUAz8wH+AObrSZpfnOjCAAAAAElFTkSuQmCC","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAABVUlEQVR4nO2bsUrDYBhF79+UoquDuBYfyN23EHwMcfAR3H0KB1cn0UVQRCyCQgattsnnEEGwxTp9p5B7xi739PRPhpCWq/o41GMGtACNA9ACNA5AC9A4AC1A4wC0AI0D0AI0DkAL0DgALUDjALQAjQPQAjQOQAvQOAAtQOMAtACNAyCrs1BcfyDTvxmmrk0atWe14vRVmoaqy93U+WXkBIhQezBRnL9Jz/Pus60qZXoVOZdAKRoc7ai6GEvbuYduFXn3gKGkUVEZj9Im/0P+TXCjpE/+RX6AzZ4HiKrnAdYNB6AFaByAFqBxAFqAxgFoARoHoAVo0gOU+H45fU3eUc8/Ae/dNy91K83T1xdIDRDTUNx0D0OjCen2M3N+KWkB4uRFsXcvPf787M3+g9rDJ+lulqWxQPE/RnqOA9ACNA5AC9A4AC1A4wC0AI0D0AI0DkAL0HwBqaZBdGgUYGIAAAAASUVORK5CYII=","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAABaklEQVR4nO2aPUrEUBhF7/eeEycyREEYGEhjIcKIK7DT3toFOI3Y2EzpCqwFwU24AJdiP40/oIg/Y56FaO/L4OUj9zSBQC6HA695xLbOQ0KHCWwBNgrAFmCjAGwBNgrAFmCjAGwBNgrAFmCjAGwBNgrAFmCjAGwBNgrAFmCjAGwBNu4DRPRQx+3s75cW6PKvrIURdpcPsd+foLASJ/cbWTvuAhgMk8Eldoo9VDYEADylu+w9d0cgIeHq+RinD2M8NrPWe+4CAECDOebpHbPP29ZbLgP88IHX1huuA7w1L603XAdI1rTecB1gESgAW4CNArAF2CgAW4CNArAF2CgAW4CN6wAG+34my95wHaBnfQDASlhFyLzcchugsBJ1HAMAAiJGcTNrx2WAg3KKs+oG66H+fTetrnE0uMAw/u1y1PSzdMdRALYAGwVgC7BRALYAGwVgC7BRALYAGwVgC7BRALYAGwVgC7DpfIAvrXopNsvhxcUAAAAASUVORK5CYII="],
+"time":120
+}
+```
+
+The response will contain the following properties, which represent a challenge:
+
+- challenge - A token to be sent back to the server (see the Responding to a Challenge section.)
+- stage - Current stage of the CAPTCHA.
+- stages - Number of stages needed to pass the CAPTCHA.
+- expected - A PNG image containing the character that must be recognized throughout the 9 images.
+- images - An array of 9 PNG images.
+- time - Time (in seconds) until the challenge expires.
+
+## Responding to a Challenge
+
+To respond to a challenge, send another POST request to the `/api/challenge`, passing in the token you received in the challenge with the `X-Captcha-Challenge header`.
+
+Additionally, pass in a JSON body containing the following property:
+
+- answer - Array of 9 booleans, representing whether the corresponding images contain the expected character
+
+An example request is as follows:
+
+```bash
+POST `/api/challenge` X-Captcha-Challenge:<br />
+eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMjU2R0NNIn0.olzRmRu19fLfNlkUVcsWCPZ5dBB6_R8HeiFU59zI7eYUNvg4kc4edQ.QjblDShS9Tnrvmf8.iVZZiJVSV8JbuNRmZfg3jEVJatko6NuFG_HhM-0eh0Ki2FKU1F7oF_MyHTJSdJ_nTm92Li6FviJeVV4Rsf4ZhiQkGgL45n_6lsLB7_MZAxGOn8pFRuJ5Ewmc9_-CPdF5esSKURlgfLSQvpU7jAHNNT4.OQAHwI7uYwnMLU9FzktaGw <br />
+Content-Type: application/json
+
+{
+"answer": [false, false, false, true, false, false, true, true, true]
+}
+```
+The server will respond with one of three possible responses:
+
+1. **Another challenge** - See the example and properties above. 
+2. `{"error": "Error message here"}` - An error occurred.
+3. `{"done": true, "flag": "???"}` - The CAPTCHA was successfully completed.
+
+Continue solving challenges until you receive an error or complete the CAPTCHA.
+## Sample Python Code
+
+```py
+import requests
+
+r = requests.post("http://1CAPTCHA_URL/api/challenge")
+response = r.json()
+
+# Do stuff
+
+r = requests.post("http://1CAPTCHA_URL/api/challenge", headers={"X-Captcha-Challenge": response["challenge"]}, json={"answer": [False, False, False, True, False, False, True, True, True]})
+response = r.json()
+```
