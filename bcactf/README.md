@@ -3,6 +3,7 @@
 
 ## Duration
 **CTF started** - 11 June 2021, 10:00 pm GMT
+
 **CTF ended** - 13 June 2021, 10:00 pm GMT
 
 ---
@@ -10,27 +11,27 @@
 ## Categories
 
 #### Crypto
-- [Little e](./little-e)
-- [fnes 1](./fnes1) W.I.P.
-- [cipher mishap](./cipher-mishap)
-- [sailing thru decryption](./sailing-thru-decryption)
-- [􃗁􌲔􇺟􊸉􁫞􄺷􄧻􃄏􊸉](./unicode-chars)
+- [Little e](./little-e.md)
+- [fnes 1](./fnes1.md) W.I.P.
+- [cipher mishap](./cipher-mishap.md)
+- [sailing thru decryption](./sailing-thru-decryption.md)
+- [􃗁􌲔􇺟􊸉􁫞􄺷􄧻􃄏􊸉](./unicode-chars.md)
 
 #### Web
-- [Countdown Timer](./countdown-timer)
-- [Movie Login 1](./movie-login-1)
-- [Movie Login 2](./movie-login-2)
-- [Movie Login 3](./movie-login-3)
-- [Home Automation](./home-automation)
-- [Agent Gerald](./agent-gerald)
-- [L10n Pool](./l10n-pool)
-- [Regular Website](./regular-website)
+- [Countdown Timer](./countdown-timer.md)
+- [Movie Login 1](./movie-login-1.md)
+- [Movie Login 2](./movie-login-2.md)
+- [Movie Login 3](./movie-login-3.md)
+- [Home Automation](./home-automation.md)
+- [Agent Gerald](./agent-gerald.md)
+- [L10n Pool](./l10n-pool.md)
+- [Regular Website](./regular-website.md)
 
 #### Forensic
-- [Secure ZIP](./secure-zip)
+- [Secure ZIP](./secure-zip.md)
 
 #### Miscellaneous
-- [1Captcha](./1captcha)
+- [1Captcha](./1captcha.md)
 
 ---
 
